@@ -7,13 +7,13 @@ namespace DIYTracker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class InitialSchema : IMigrationMetadata
+    public sealed partial class AddSchema : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialSchema));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddSchema));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011222031540_InitialSchema"; }
+            get { return "202011222101140_AddSchema"; }
         }
         
         string IMigrationMetadata.Source
