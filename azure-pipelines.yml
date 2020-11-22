@@ -7,12 +7,6 @@ steps:
   inputs:
     solution: '**/*.sln'
     msbuildArguments: '/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:publishUrl="$(System.DefaultWorkingDirectory)\WebAppContent"'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'custom'
-    projects: 'D:\a\1\s\DIYTracker\DIYTracker.csproj'
-    custom: 'ef'
-    arguments: 'migrations script -i -o migration.sql'
 - task: ArchiveFiles@2
   displayName: 'Archive $(System.DefaultWorkingDirectory)\WebAppContent'
   inputs:
@@ -31,6 +25,7 @@ steps:
     projects: 'DIYTracker/DIYTracker.csproj'
     custom: 'ef'
     arguments: 'migrations script -i -o migration.sql'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
 - task: SqlAzureDacpacDeployment@1
   displayName: Install the database
   inputs:
