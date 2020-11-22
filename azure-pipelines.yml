@@ -25,6 +25,7 @@ steps:
     projects: '**/*.csproj'
     custom: 'ef'
     arguments: 'migrations script -i -o migration.sql'
+    workingDirectory: '$(System.DefaultWorkingDirectory)\WebAppContent'
 # - task: efcore-migration-script-generator-task@0
 #   inputs:
 #     projectpath: 'DIYTracker/DIYTracker.csproj'
