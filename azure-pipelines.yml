@@ -25,13 +25,13 @@ steps:
 #     projects: '**/*.csproj'
 #     custom: 'ef'
 #     arguments: 'migrations script -i -o migration.sql'
-- task: pekspro.pekspro-efcore-migration-script-generator.efcore-migration-script-generator.efcore-migration-script-generator-task@0
-  displayName: 'Generate Migration Scripts'
+- task: efcore-migration-script-generator-task@0
   inputs:
-    projectpath: DIYTracker/DIYTracker.csproj
-    databasecontexts: MyDatabaseContext
+    projectpath: 'DIYTracker/DIYTracker.csproj'
+    databasecontexts: 'MyDatabaseContext'
+    targetfolder: '$(build.artifactstagingdirectory)/migrations'
     build: false
-    installdependencies: true
+    installdependencies: false
 - task: SqlAzureDacpacDeployment@1
   displayName: Install the database
   inputs:
