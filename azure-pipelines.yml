@@ -22,10 +22,9 @@ steps:
   displayName: 'Create migration'
   inputs:
     command: 'custom'
-    projects: 'DIYTracker/DIYTracker.csproj'
+    projects: '**/*.csproj'
     custom: 'ef'
     arguments: 'migrations script -i -o migration.sql'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
 - task: SqlAzureDacpacDeployment@1
   displayName: Install the database
   inputs:
