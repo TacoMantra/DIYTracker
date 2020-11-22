@@ -31,7 +31,7 @@ steps:
 #     arguments: 'migrations script -i -o migration.sql'
 - task: efcore-migration-script-generator-task@0
   inputs:
-    projectpath: 'DIYTracker/DIYTracker.csproj'
+    projectpath: '**/*.csproj'
     databasecontexts: 'MyDatabaseContext'
     targetfolder: '$(build.artifactstagingdirectory)/migrations'
     installdependencies: true
