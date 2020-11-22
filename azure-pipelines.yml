@@ -4,8 +4,6 @@ steps:
 - task: NuGetCommand@2  
   displayName: 'Restore nuget packages' 
 - task: MSBuild@1
-  displayName: 'Build the project'
-- task: MSBuild@1
   inputs:
     solution: '**/*.sln'
     msbuildArguments: '''/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:publishUrl="$(System.DefaultWorkingDirectory)\WebAppContent"'''
