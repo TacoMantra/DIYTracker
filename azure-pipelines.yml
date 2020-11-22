@@ -21,9 +21,10 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'Create migration'
   inputs:
-    command: custom
-    custom: ef
-    arguments: 'migrations script -i -o migration.sql' 
+    command: 'custom'
+    projects: '**/*.csproj'
+    custom: 'ef'
+    arguments: 'migrations script -i -o migration.sql'
 - task: SqlAzureDacpacDeployment@1
   displayName: Install the database
   inputs:
