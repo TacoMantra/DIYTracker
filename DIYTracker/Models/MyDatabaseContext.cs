@@ -19,19 +19,19 @@ namespace DIYTracker.Models
         {
         }
 
-        //public System.Data.Entity.DbSet<DIYTracker.Models.Material> Materials { get; set; }
+        public System.Data.Entity.DbSet<DIYTracker.Models.Material> Materials { get; set; }
 
-        //public System.Data.Entity.DbSet<DIYTracker.Models.Project> Projects { get; set; }
+        public System.Data.Entity.DbSet<DIYTracker.Models.Project> Projects { get; set; }
 
-        //public System.Data.Entity.DbSet<DIYTracker.Models.ProjectMaterial> ProjectMaterials { get; set; }
+        public System.Data.Entity.DbSet<DIYTracker.Models.ProjectMaterial> ProjectMaterials { get; set; }
 
-        //public System.Data.Entity.DbSet<DIYTracker.Models.ProjectTool> ProjectTools { get; set; }
+        public System.Data.Entity.DbSet<DIYTracker.Models.ProjectTool> ProjectTools { get; set; }
 
-        //public System.Data.Entity.DbSet<DIYTracker.Models.Step> Steps { get; set; }
+        public System.Data.Entity.DbSet<DIYTracker.Models.Step> Steps { get; set; }
 
-        //public System.Data.Entity.DbSet<DIYTracker.Models.Tool> Tools { get; set; }
+        public System.Data.Entity.DbSet<DIYTracker.Models.Tool> Tools { get; set; }
 
-        //public System.Data.Entity.DbSet<DIYTracker.Models.User> Users { get; set; }
+        public System.Data.Entity.DbSet<DIYTracker.Models.User> Users { get; set; }
 
         public System.Data.Entity.DbSet<DIYTracker.Models.Todo> Todoes { get; set; }
     }
