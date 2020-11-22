@@ -23,7 +23,7 @@ steps:
   inputs:
     command: 'custom'
     projects: 'DIYTracker/DIYTracker.csproj'
-    custom: 'ef'
+    custom: 'ef --project'
     arguments: 'migrations script -i -o migration.sql'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
 - task: SqlAzureDacpacDeployment@1
