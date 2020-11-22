@@ -12,6 +12,10 @@ steps:
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)\WebAppContent'
     includeRootFolder: false
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: 
 - task: DotNetCoreCLI@2
   displayName: 'Initialize EntityFrameworkCore'
   inputs:
