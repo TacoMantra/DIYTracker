@@ -1,0 +1,26 @@
+pool:
+  vmImage: windows-latest
+steps:
+- task: NuGetCommand@2  
+  displayName: 'Restore nuget packages' 
+- task: MSBuild@1
+  displayName: 'Build the project'
+- task: DotNetCoreCLI@2
+  displayName: 'Initialize EntityFrameworkCore'
+  inputs:
+    command: custom
+    custom: tool
+    arguments: 'install --global dotnet-ef'
+- task: DotNetCoreCLI@2
+  displayName: 'Create migration'
+  inputs:
+    command: custom
+    custom: ef
+    arguments: 'migrations script -i -o migration.sql' 
+- task: SqlAzureDacpacDeployment@1
+  displayName: Install the database
+  inputs:
+    azureSubscription: 'Azure for Students (46fee1dd-ee7b-4bd2-b078-a79b6a52abcd)'
+    AuthenticationType: connectionString
+    ConnectionString: 'Server=tcp:sqlserverim64jhe4nddwu.database.windows.net,1433;Initial Catalog=DIYTracker;Persist Security Info=False;User ID=jonmillervt;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
+    DacpacFile: 'migration.sql'
