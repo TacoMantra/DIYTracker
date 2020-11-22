@@ -18,13 +18,20 @@ steps:
     command: custom
     custom: tool
     arguments: 'install --global dotnet-ef'
-- task: DotNetCoreCLI@2
-  displayName: 'Create migration'
+# - task: DotNetCoreCLI@2
+#   displayName: 'Create migration'
+#   inputs:
+#     command: 'custom'
+#     projects: '**/*.csproj'
+#     custom: 'ef'
+#     arguments: 'migrations script -i -o migration.sql'
+- task: pekspro.pekspro-efcore-migration-script-generator.efcore-migration-script-generator.efcore-migration-script-generator-task@0
+  displayName: 'Generate Migration Scripts'
   inputs:
-    command: 'custom'
-    projects: '**/*.csproj'
-    custom: 'ef'
-    arguments: 'migrations script -i -o migration.sql'
+    projectpath: DIYTracker/DIYTracker.csproj
+    databasecontexts: MyDatabaseContext
+    build: false
+    installdependencies: true
 - task: SqlAzureDacpacDeployment@1
   displayName: Install the database
   inputs:
