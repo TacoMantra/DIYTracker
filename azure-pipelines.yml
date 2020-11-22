@@ -6,7 +6,7 @@ steps:
 - task: MSBuild@1
   inputs:
     solution: '**/*.sln'
-    msbuildArguments: '''/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:publishUrl="$(System.DefaultWorkingDirectory)\WebAppContent"'''
+    msbuildArguments: '/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:publishUrl="$(System.DefaultWorkingDirectory)\WebAppContent"'
 - task: ArchiveFiles@2
   displayName: 'Archive $(System.DefaultWorkingDirectory)\WebAppContent'
   inputs:
