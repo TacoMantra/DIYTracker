@@ -5,6 +5,15 @@ steps:
   displayName: 'Restore nuget packages' 
 - task: MSBuild@1
   displayName: 'Build the project'
+- task: MSBuild@1
+  inputs:
+    solution: '**/*.sln'
+    msbuildArguments: '''/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:publishUrl="$(System.DefaultWorkingDirectory)\WebAppContent"'''
+- task: ArchiveFiles@2
+  displayName: 'Archive $(System.DefaultWorkingDirectory)\WebAppContent'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)\WebAppContent'
+    includeRootFolder: false
 - task: DotNetCoreCLI@2
   displayName: 'Initialize EntityFrameworkCore'
   inputs:
@@ -24,3 +33,8 @@ steps:
     AuthenticationType: connectionString
     ConnectionString: 'Server=tcp:sqlserverim64jhe4nddwu.database.windows.net,1433;Initial Catalog=DIYTracker;Persist Security Info=False;User ID=jonmillervt;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
     DacpacFile: 'migration.sql'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: '$(Parameters.ArtifactName)'
