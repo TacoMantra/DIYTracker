@@ -13,7 +13,7 @@ namespace DIYTracker.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202011221926340_InitialSchema"; }
+            get { return "202011222031540_InitialSchema"; }
         }
         
         string IMigrationMetadata.Source

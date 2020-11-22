@@ -151,14 +151,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011221926340_InitialSchema.cs" />
-    <Compile Include="Migrations\202011221926340_InitialSchema.designer.cs">
-      <DependentUpon>202011221926340_InitialSchema.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011221947389_RemoveTestColumn.cs" />
-    <Compile Include="Migrations\202011221947389_RemoveTestColumn.designer.cs">
-      <DependentUpon>202011221947389_RemoveTestColumn.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IItem.cs" />
     <Compile Include="Models\IProjectItem.cs" />
@@ -238,14 +230,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011221926340_InitialSchema.resx">
-      <DependentUpon>202011221926340_InitialSchema.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011221947389_RemoveTestColumn.resx">
-      <DependentUpon>202011221947389_RemoveTestColumn.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
