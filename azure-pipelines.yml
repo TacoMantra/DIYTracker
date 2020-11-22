@@ -12,29 +12,29 @@ steps:
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)\WebAppContent'
     includeRootFolder: false
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: 
-- task: DotNetCoreCLI@2
-  displayName: 'Initialize EntityFrameworkCore'
-  inputs:
-    command: custom
-    custom: tool
-    arguments: 'install --global dotnet-ef'
-- task: DotNetCoreCLI@2
-  displayName: 'Create migration'
-  inputs:
-    command: 'custom'
-    projects: '**/*.csproj'
-    custom: 'ef'
-    arguments: 'migrations script -i -o migration.sql'
-# - task: efcore-migration-script-generator-task@0
+# - task: UseDotNet@2
 #   inputs:
-#     projectpath: 'DIYTracker/DIYTracker.csproj'
-#     databasecontexts: 'MyDatabaseContext'
-#     targetfolder: '$(build.artifactstagingdirectory)/migrations'
-#     installdependencies: false
+#     packageType: 'sdk'
+#     version: 
+# - task: DotNetCoreCLI@2
+#   displayName: 'Initialize EntityFrameworkCore'
+#   inputs:
+#     command: custom
+#     custom: tool
+#     arguments: 'install --global dotnet-ef'
+# - task: DotNetCoreCLI@2
+#   displayName: 'Create migration'
+#   inputs:
+#     command: 'custom'
+#     projects: '**/*.csproj'
+#     custom: 'ef'
+#     arguments: 'migrations script -i -o migration.sql'
+- task: efcore-migration-script-generator-task@0
+  inputs:
+    projectpath: 'DIYTracker/DIYTracker.csproj'
+    databasecontexts: 'MyDatabaseContext'
+    targetfolder: '$(build.artifactstagingdirectory)/migrations'
+    installdependencies: true
 - task: SqlAzureDacpacDeployment@1
   displayName: Install the database
   inputs:
