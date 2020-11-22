@@ -24,7 +24,7 @@ steps:
     command: 'custom'
     projects: '**/*.csproj'
     custom: 'ef'
-    arguments: 'migrations script -i -o migration.sql'
+    arguments: 'migrations script -i -o --project migration.sql'
 # - task: efcore-migration-script-generator-task@0
 #   inputs:
 #     projectpath: 'DIYTracker/DIYTracker.csproj'
