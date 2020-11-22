@@ -1,4 +1,4 @@
-﻿namespace DotNetAppSqlDb.Migrations
+﻿namespace DIYTracker.Migrations
 {
     using System;
     using System.Data.Entity;

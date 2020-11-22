@@ -6,7 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DIYTracker.Models;using System.Diagnostics;
+using DIYTracker.Models;
+using System.Diagnostics;
 
 namespace DIYTracker.Controllers
 {

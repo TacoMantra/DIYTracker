@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetAppSqlDb</RootNamespace>
-    <AssemblyName>DotNetAppSqlDb</AssemblyName>
+    <RootNamespace>DIYTracker</RootNamespace>
+    <AssemblyName>DIYTracker</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -151,13 +151,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011220503544_AddTest.cs" />
-    <Compile Include="Migrations\202011220503544_AddTest.designer.cs">
-      <DependentUpon>202011220503544_AddTest.cs</DependentUpon>
+    <Compile Include="Migrations\202011221926340_InitialSchema.cs" />
+    <Compile Include="Migrations\202011221926340_InitialSchema.designer.cs">
+      <DependentUpon>202011221926340_InitialSchema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011221947389_RemoveTestColumn.cs" />
+    <Compile Include="Migrations\202011221947389_RemoveTestColumn.designer.cs">
+      <DependentUpon>202011221947389_RemoveTestColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\IItem.cs" />
+    <Compile Include="Models\IProjectItem.cs" />
+    <Compile Include="Models\Material.cs" />
     <Compile Include="Models\MyDatabaseContext.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\ProjectMaterial.cs" />
+    <Compile Include="Models\ProjectTool.cs" />
     <Compile Include="Models\Todo.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Step.cs" />
+    <Compile Include="Models\Tool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -227,8 +240,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011220503544_AddTest.resx">
-      <DependentUpon>202011220503544_AddTest.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011221926340_InitialSchema.resx">
+      <DependentUpon>202011221926340_InitialSchema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011221947389_RemoveTestColumn.resx">
+      <DependentUpon>202011221947389_RemoveTestColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
