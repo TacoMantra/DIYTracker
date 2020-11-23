@@ -12,10 +12,6 @@ steps:
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)\WebAppContent'
     includeRootFolder: false
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '2.2.207'
 # - task: UseDotNet@2
 #   inputs:
 #     packageType: 'sdk'
@@ -39,6 +35,7 @@ steps:
     databasecontexts: 'MyDatabaseContext'
     targetfolder: '$(build.artifactstagingdirectory)/migrations'
     installdependencies: true
+    eftoolversion: '3.1.402'
 - task: SqlAzureDacpacDeployment@1
   displayName: Install the database
   inputs:
