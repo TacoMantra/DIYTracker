@@ -8,7 +8,9 @@ namespace DIYTracker.Models
 {
     interface IProjectItem
     {
-        string Id { get; set; }
+        int Id { get; set; }
+
+        IItem Item { get; set; }
 
         Project Project { get; set; }
     }
