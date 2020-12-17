@@ -70,6 +70,12 @@
                 Project = replaceOutletCover
             };
 
+            var restorePower = new Step
+            {
+                Order = 4,
+                Description = "Restore power to the outlet from the breaker box."
+            };
+
             try
             {
                 context.Users.AddOrUpdate(systemUser);
@@ -79,7 +85,8 @@
                 context.Steps.AddOrUpdate(
                     shutDownPower,
                     removeOldCover,
-                    placeNewCover
+                    placeNewCover,
+                    restorePower
                 );
                 context.ProjectMaterials.AddOrUpdate(
                     new ProjectMaterial
@@ -103,49 +110,26 @@
             {
                 foreach (var error in exception.EntityValidationErrors)
                 {
-                    Console.WriteLine($"Error with entity {error.Entry.Entity.GetType().Name}");
+                    var entityName = error.Entry.Entity.GetType().Name;
+                    Console.WriteLine($"Error with entity {0}, attempting to change value from \"{1}\" to \"{2}\"",
+                        entityName,
+                        error.Entry.OriginalValues[entityName],
+                        error.Entry.CurrentValues[entityName]);
+
+                    if (error.ValidationErrors.Count > 0)
+                    {
+                        Console.WriteLine("The following validation errors were encountered:");
+                        foreach (var validationError in error.ValidationErrors)
+                        {
+                            Console.WriteLine(validationError.ToString());
+                        }
+                    }
                 }            
             }
-            //try
-            //{
-            //    //context.Users.AddOrUpdate(systemUser);
-            //    context.Projects.AddOrUpdate(p => p.Name, replaceOutletCover);
-            //    //context.Materials.AddOrUpdate(outletCover);
-            //    //context.Tools.AddOrUpdate(flatHeadScrewdriver);
-            //    //context.Steps.AddOrUpdate(
-            //    //    shutDownPower,
-            //    //    removeOldCover,
-            //    //    placeNewCover
-            //    //);
-            //    //context.ProjectMaterials.AddOrUpdate(
-            //    //    new ProjectMaterial
-            //    //    {
-            //    //        Item = outletCover,
-            //    //        Project = replaceOutletCover,
-            //    //        Quantity = 1
-            //    //    }
-            //    //);
-            //    //context.ProjectTools.AddOrUpdate(
-            //    //    new ProjectTool
-            //    //    {
-            //    //        Item = flatHeadScrewdriver,
-            //    //        Project = replaceOutletCover
-            //    //    }
-            //    //);
-            //}
-            //catch (DbEntityValidationException e)
-            //{
-            //    foreach (var eve in e.EntityValidationErrors)
-            //    {
-            //        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-            //            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-            //        foreach (var ve in eve.ValidationErrors)
-            //        {
-            //            Debug.Write($"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
-            //        }
-            //    }
-            //    throw;
-            //}
+            finally
+            {
+                Console.WriteLine("Migration complete, seed data has been updated.");
+            }
         }
     }
 }
